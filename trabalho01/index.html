@@ -8,28 +8,21 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="assets/css/all.css" rel="stylesheet" />
-    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link href="./assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="./assets/css/all.css" rel="stylesheet" />
+    <link href="./assets/css/styles.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200&display=swap"
       rel="stylesheet"
     />
     <title>Film-Review</title>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
-      <!--a href="#" class="navbar-brand">
-        <img src="" alt="Film-Review" style = "width:90px;">
-      </a-->
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
       <div class="container">
-        <a href="#" class="navbar-brand"
-          ><img
-            src="../bootstrap/assets/images/Rio-Turismo.png"
-            alt="Rio Turismo"
-            style="width: 90px"
-        /></a>
+        <a class="navbar-brand" href="#">Navbar</a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -37,17 +30,25 @@
           data-target="#menu"
           aria-controls="menu"
           aria-expanded="false"
-          aria-label="Botão de Navegação"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div id="menu" class="collapse navbar-collapse">
-          <div class="navbar-nav mr-auto">
-            <a href="index.html" class="nav-link nav-item">Home</a>
-            <a href="#" class="nav-link nav-item">Quem Somos</a>
-            <a href="#" class="nav-link nav-item">Contato</a>
-          </div>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a href="#" class="nav-link">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">Quem Somos</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">Contato</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
@@ -57,7 +58,7 @@
         <h1 class="text-center display-4">Em Destaque</h1>
         <div class="row ml-auto mr-auto">
           <div class="col-lg-6 text-center">
-            <a href="lacienaga.html">
+            <a href="reviews/lacienaga.html">
               <figure class="figure pt-3">
                 <img
                   src="assets/img/lacienaga.jpg"
@@ -127,7 +128,6 @@
               </div>
             </div>
             <div class="card-footer">
-
               <button class="btn btn-dark">Leia a análise</button>
             </div>
           </div>
@@ -155,9 +155,22 @@
       </div>
     </section>
 
-    <script src="assets/js/jquery-3.3.1.js"></script>
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/script.js"></script>
+    <footer>
+      <script
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"
+      ></script>
+    </footer>
   </body>
 </html>
