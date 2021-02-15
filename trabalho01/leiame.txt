@@ -1,8 +1,15 @@
-DISCENTE: VITOR BARDASSON LEITE
+discente: vitor bardasson leite
 118.031.017
 
-COMPONENTES UTILIZADOS NÃO APRESENTADOS PREVIAMENTE:
-    - BADGE
-    - PROGRESS
-    - FIGURE
-    - LISTGROUP
+componentes utilizados não apresentados previamente:
+    - badge
+    - progress
+    - figure
+    - listgroup
+    dentre outros
+
+páginas feitas:
+    - index
+    - sobre (preenchida com lorem ipsum)
+    - contato
+    - review (5 filmes de exemplo)
