@@ -6,3 +6,7 @@
 * {
     font-family: 'Noto Sans JP', sans-serif;
 }
+
+nav {
+  z-index: 1000;
+}

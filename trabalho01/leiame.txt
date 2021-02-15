@@ -13,3 +13,5 @@ páginas feitas:
     - sobre (preenchida com lorem ipsum)
     - contato
     - review (5 filmes de exemplo)
+
+foi adicionado apenas uma quantidade mínima de css para diagramação e fontes
