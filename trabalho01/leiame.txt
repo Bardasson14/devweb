@@ -14,4 +14,6 @@ páginas feitas:
     - contato
     - review (5 filmes de exemplo)
 
-foi adicionado apenas uma quantidade mínima de css para diagramação e fontes
+OBSERVAÇÕES: 
+    1 - foi adicionada apenas uma quantidade ínfima de css para diagramação e fontes
+    2 - não há pasta js pois os scripts estão adicionados de forma remota
