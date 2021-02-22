@@ -1,9 +1,13 @@
+//obs I.: não será necessário validar o radio, visto que esse já terá, por padrão, 1 opção checked
+//obs II: apenas será necessário validar a 2 checkbox, visto que a primeira é opcional para o usuário
+
 $(function () {
   $("#botao-inscricao-newsletter").click(function () {
     let nome_valido = validaNomeFunction();
     let email_valido = validaEmail();
+    let freq_valida = validaFrequenciaNewsletter()
 
-    if (nome_valido && email_valido) {
+    if (nome_valido && email_valido && freq_valida) {
       alert("Tudo ok!");
     } else {
       alert("Deu erro!");
@@ -38,3 +42,21 @@ function validaEmail() {
   email.addClass("is-valid")
   return true
 }
+
+function validaFrequenciaNewsletter() {
+  let frequencia = $("#frequencia-newsletter")
+
+  if(frequencia.val() === '') {
+     frequencia.addClass("is-invalid")
+     frequencia.removeClass("is-valid")
+     return false
+  }
+  else {
+     frequencia.removeClass("is-invalid")
+     frequencia.addClass("is-valid")
+     return true
+  }
+}
+
+
+

@@ -55,7 +55,7 @@
     </nav>
 
     <section id="form-inscricao">
-      <div class="container my-3" style="max-width: 80%">
+      <div class="container my-2" style="max-width: 80%">
         <h1 class="display-4 mb-4">Assine nossa Newsletter</h1>
 
         <form action="">
@@ -129,8 +129,20 @@
             </div>    
           </fieldset>
 
+          <label>Frequência da Newsletter:</label>
+
+          <div class="form-group">
+            <select class="form-control form-control-sm" id="frequencia-newsletter" aria-label="Frequência da Newsletter">
+              <option value="">-- Selecione uma opção: --</option selected>
+              <option value="3">A cada 3 dias</option>
+              <option value="7">Semanalmente</option>
+              <option value="15">Quinzenalmente</option>
+              <option value="30">Mensalmente</option>
+            </select>
+            <div class="invalid-feedback">Opção inválida</div>  
+          </div>
           
-          <fieldset id="termos-condicoes" class="form-group">
+          <fieldset id="termos-condicoes" class="form-group mt-3">
             <legend>
               <strong>Termos e Condições</strong>
             </legend>
@@ -138,18 +150,19 @@
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="perm-1" id="permissao-1">
               <label class="form-check-label" for="check-termos">
-                Desejo receber ofertas de lojas parceiras do site em meu e-mail fornecido acima.
+                Desejo receber ofertas de lojas parceiras do site em meu e-mail fornecido acima <strong>(opcional)</strong>
               </label>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="perm-2" id="permissao-2" checked>
               <label class="form-check-label" for="check-termos">
-                Desejo receber a newsletter quinzenal do site em meu e-mail.
+                Aceito os Termos e Condições do site <strong>(obrigatório)</strong>
               </label>
             </div>
           </fieldset>
 
           <button type="button" id="botao-inscricao-newsletter" class = "btn btn-primary" >Cadastrar</button>
+
         </form>
       </div>
     </section>
