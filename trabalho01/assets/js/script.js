@@ -1,5 +1,5 @@
 $(function () {
-  $("#botao-enviar").click(function () {
+  $("#botao-inscricao-newsletter").click(function () {
     let nome_valido = validaNomeFunction();
     let email_valido = validaEmail();
 
