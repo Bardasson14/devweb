@@ -1,6 +1,8 @@
 $(function() {
     $("#submit-button").click(function(){
-        if (nameValidation()) {
+
+        let valid = nameValidation()
+        if (valid) {
             alert ('ok')
         }
 
