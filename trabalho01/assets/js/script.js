@@ -1,31 +1,40 @@
-$(function() {
-    $("#submit-button").click(function(){
+$(function () {
+  $("#botao-enviar").click(function () {
+    let nome_valido = validaNomeFunction();
+    let email_valido = validaEmail();
 
-        let valid = nameValidation()
-        let erro_1 = document.querySelector("#erro-1")
-
-        if (valid) {
-            erro_1.classList.remove("d-block")
-        }
-
-        else {
-            erro_1.classList.add("d-block")
-        }
-    })
-})
-
-
-
-function nameValidation() {
-    let nome = $("#nome")
-
-    if (nome.val() == '') {
-        nome.addClass("is-invalid")
-        nome.removeClass("is-valid")
-        return false
+    if (nome_valido && email_valido) {
+      alert("Tudo ok!");
+    } else {
+      alert("Deu erro!");
     }
-    
-    nome.addClass("is-valid")
-    nome.removeClass("is-invalid")      
-    return true
+  });
+});
+
+function validaNomeFunction() {
+  let nome = $("#nome");
+
+  if (nome.val() == "") {
+    nome.addClass("is-invalid");
+    nome.removeClass("is-valid");
+    return false;
+  }
+
+  nome.removeClass("is-invalid");
+  nome.addClass("is-valid");
+  return true;
+}
+
+function validaEmail() {
+  let email = $("#email");
+  //script padrao de validacao de e-mail utilizando regex
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  if (!regex.test(email.val())) {
+    email.addClass("is-invalid")
+    email.removeClass("is-valid")
+    return false
+  }
+  email.removeClass("is-invalid")
+  email.addClass("is-valid")
+  return true
 }
