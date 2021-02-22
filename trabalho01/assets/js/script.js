@@ -2,12 +2,14 @@ $(function() {
     $("#submit-button").click(function(){
 
         let valid = nameValidation()
+        let erro_1 = document.querySelector("#erro-1")
+
         if (valid) {
-            alert ('ok')
+            erro_1.classList.remove("d-block")
         }
 
         else {
-            alert('erro')
+            erro_1.classList.add("d-block")
         }
     })
 })
