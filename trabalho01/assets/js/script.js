@@ -2,22 +2,37 @@
 //obs II: apenas será necessário validar a 2 checkbox, visto que a primeira é opcional para o usuário
 
 $(function () {
-  $("#botao-inscricao-newsletter").click(function () {
-    let nome_valido = validaNomeFunction();
+  $("#botao-form-newsletter").click(function() {
+    let nome_valido = validaNome();
     let email_valido = validaEmail();
     let freq_valida = validaFrequenciaNewsletter()
-    let genero_valido = validaGeneroFunction()
+    let genero_valido = validaGenero()
     let termos_valido = validaCheckTermos()
 
     if (nome_valido && email_valido && freq_valida && genero_valido && termos_valido) {
-      alert("Tudo ok!");
+      alert("Tudo ok!")
     } else {
-      alert("Deu erro!");
+      alert("Deu erro!")
     }
-  });
+  })
+
+  $("#botao-form-contato").click(function() {
+    let nome_valido = validaNome()
+    let email_valido = validaEmail()
+    let assunto_valido = validaAssunto()
+    let msg_valida = validaMsg()
+    if (nome_valido && email_valido && assunto_valido && msg_valida) {
+      alert("Tudo ok!")
+    }
+    else {
+      alert("Erro!")
+    }
+  })
+
+
 });
 
-function validaNomeFunction() {
+function validaNome() {
   let nome = $("#nome");
 
   if (nome.val() == "") {
@@ -60,7 +75,7 @@ function validaFrequenciaNewsletter() {
   }
 }
 
-function validaGeneroFunction() {
+function validaGenero() {
 
   let gen_m = $("#genero-m")
   let gen_f = $("#genero-f")
@@ -108,4 +123,31 @@ function validaCheckTermos() {
   termos_feedback.removeClass("d-block")
   return true
 
+}
+
+function validaAssunto() {
+  let assunto = $("#assunto")
+
+  if (assunto.val()=='') {
+    assunto.addClass("is-invalid")
+    assunto.removeClass("is-valid")
+    return false
+  }
+
+  assunto.addClass("is-valid")
+  assunto.removeClass("is-invalid")
+  return true
+}
+
+function validaMsg() {
+  let msg = $("#msg")
+  if (msg.val()=='') {
+    msg.addClass("is-invalid")
+    msg.removeClass("is-valid")
+    return false
+  }
+
+  msg.addClass("is-valid")
+  msg.removeClass("is-invalid")
+  return true
 }
