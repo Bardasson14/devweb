@@ -6,8 +6,10 @@ $(function () {
     let nome_valido = validaNomeFunction();
     let email_valido = validaEmail();
     let freq_valida = validaFrequenciaNewsletter()
+    let genero_valido = validaGeneroFunction()
+    let termos_valido = validaCheckTermos()
 
-    if (nome_valido && email_valido && freq_valida) {
+    if (nome_valido && email_valido && freq_valida && genero_valido && termos_valido) {
       alert("Tudo ok!");
     } else {
       alert("Deu erro!");
@@ -58,5 +60,52 @@ function validaFrequenciaNewsletter() {
   }
 }
 
+function validaGeneroFunction() {
 
+  let gen_m = $("#genero-m")
+  let gen_f = $("#genero-f")
+  let gen_x = $("#genero-x")
+  let genero_feedback = $("#genero-feedback")
+  let botoes = $("input[name='genero']:checked")
 
+  if (botoes.length === 0) {
+     gen_m.addClass("is-invalid")
+     gen_m.removeClass("is-valid")
+     gen_f.addClass("is-invalid")
+     gen_f.removeClass("is-valid")
+     gen_x.addClass("is-invalid")
+     gen_x.removeClass("is-valid")
+     genero_feedback.addClass("d-block")
+     return false
+  }
+  else {
+     gen_m.removeClass("is-invalid")
+     gen_m.addClass("is-valid")
+     gen_f.removeClass("is-invalid")
+     gen_f.addClass("is-valid")
+     gen_x.removeClass("is-invalid")
+     gen_x.addClass("is-valid")
+     genero_feedback.removeClass("d-block")
+     return true
+  }
+}
+
+function validaCheckTermos() {
+  let check_termos = $("#permissao-2")
+  let termos_feedback = $("#termos-feedback")
+
+  console.log(check_termos.is(":checked"))
+
+  if (!check_termos.is(":checked")) {
+    check_termos.addClass("is-invalid")
+    check_termos.removeClass("is-valid")
+    termos_feedback.addClass("d-block")
+    return false
+  }
+
+  check_termos.addClass("is-valid")
+  check_termos.removeClass("is-invalid")
+  termos_feedback.removeClass("d-block")
+  return true
+
+}
