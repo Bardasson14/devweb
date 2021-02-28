@@ -12,7 +12,7 @@ $(function () {
     if (nome_valido && email_valido && freq_valida && genero_valido && termos_valido) {
       alert("Tudo ok!")
     } else {
-      alert("Deu erro!")
+      alert("Erro!")
     }
   })
 
