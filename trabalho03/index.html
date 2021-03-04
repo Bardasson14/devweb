@@ -98,7 +98,7 @@
       <h2 class="text-center display-4">Análises anteriores</h2>
       <div class="row ml-auto mr-auto mb-3">
         <div class="col-lg-4 col-md-6 pt-3">
-          <div class="card">
+          <div class="card" id="card-1" data-like=10 data-dislike=3>
             <img src="assets/img/no.jpg" alt="" />
             <div class="card-body">
               <div class="text-center">
@@ -115,10 +115,10 @@
             <div class="card-footer d-flex justify-content-between">
               <div class="like-dislike d-inline-flex">
                 <div class="like px-1">
-                  <button class = "btn btn-secondary" ><span class="far fa-thumbs-up"> <b>(10)</b> </span></button>
+                  <button id="like1" class = "btn btn-secondary"><span class="far fa-thumbs-up"> <b>(10)</b> </span></button>
                 </div>
                 <div class="dislike px-1">
-                  <button class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(3)</b> </span></button>
+                  <button id="dislike1" class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(3)</b> </span></button>
                 </div>
               </div>
               <a href="./reviews/no.html">
@@ -145,10 +145,10 @@
             <div class="card-footer d-flex justify-content-between">
               <div class="like-dislike d-inline-flex">
                 <div class="like px-1">
-                  <button class = "btn btn-secondary" ><span class="far fa-thumbs-up"> <b>(10)</b> </span></button>
+                  <button id="like2" class = "btn btn-secondary" ><span class="far fa-thumbs-up"> <b>(10)</b> </span></button>
                 </div>
-                <div class="dislike px-1">
-                  <button class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(3)</b> </span></button>
+                <div id="dislike2" class="dislike px-1">
+                  <button id="dislike2" class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(3)</b> </span></button>
                 </div>
               </div>
               <a href="./reviews/taxidriver.html">
@@ -175,10 +175,10 @@
             <div class="card-footer d-flex justify-content-between">
               <div class="like-dislike d-inline-flex">
                 <div class="like px-1">
-                  <button class = "btn btn-secondary" ><span class="far fa-thumbs-up"> <b>(10)</b> </span></button>
+                  <button id="like3" class = "btn btn-secondary" ><span class="far fa-thumbs-up"> <b>(10)</b> </span></button>
                 </div>
                 <div class="dislike px-1">
-                  <button class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(3)</b> </span></button>
+                  <button id="dislike3" class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(3)</b> </span></button>
                 </div>
               </div>
               <a href="./reviews/therewillbeblood.html">
@@ -195,6 +195,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
       <script src="https://kit.fontawesome.com/7895937d91.js" crossorigin="anonymous"></script>
+      <script src="./assets/js/script.js"></script>
     </footer>
   </body>
 </html>

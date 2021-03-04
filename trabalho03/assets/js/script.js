@@ -29,6 +29,7 @@ $(function () {
     }
   })
 
+  $("#like1").click(()=>like(1))
 
 });
 
@@ -151,3 +152,34 @@ function validaMsg() {
   msg.removeClass("is-invalid")
   return true
 }
+
+function like(cardNumber) {
+
+  console.log("entrou")
+  let card = $(`card-${cardNumber}`)
+  let contadorDislike = card.data("dislike")
+  let contadorLike = card.data("like")
+  let dislikeButton = $(`#dislike${cardNumber}`)
+  let likeButton = $(`#like${cardNumber}`)
+  
+  if (dislikeButton.hasClass("btn-danger")) {
+    contadorDislike --
+    //card.attr("dislike", contadorDislike)
+    dislikeButton.removeClass("btn-danger")
+    dislikeButton.addClass("btn-secondary")
+    //mudar contador dislike
+  }
+  
+  if ((likeButton.hasClass("btn-secondary"))) {
+    contadorLike ++
+    //card.attr("like", contadorLike)
+    //console.log(likeButton.classList)
+    likeButton.removeClass("btn-secondary")
+    likeButton.addClass("btn-success")
+    //mudar contador like
+  }
+
+}
+
+
+function dislike(cardNumber) {}
