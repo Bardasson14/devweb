@@ -30,6 +30,7 @@ $(function () {
   })
 
   $("#like1").click(()=>like(1))
+  $("#dislike1").click(()=>dislike(1))
 
 });
 
@@ -154,32 +155,90 @@ function validaMsg() {
 }
 
 function like(cardNumber) {
-
-  console.log("entrou")
-  let card = $(`card-${cardNumber}`)
-  let contadorDislike = card.data("dislike")
+  let card = $(`#card-${cardNumber}`)
   let contadorLike = card.data("like")
-  let dislikeButton = $(`#dislike${cardNumber}`)
   let likeButton = $(`#like${cardNumber}`)
-  
-  if (dislikeButton.hasClass("btn-danger")) {
-    contadorDislike --
-    //card.attr("dislike", contadorDislike)
-    dislikeButton.removeClass("btn-danger")
-    dislikeButton.addClass("btn-secondary")
-    //mudar contador dislike
+  let dislikeButton = $(`#dislike${cardNumber}`)
+
+  if (likeButton.hasClass("btn-success")) {
+    toggle(cardNumber, 0)
   }
   
-  if ((likeButton.hasClass("btn-secondary"))) {
+  else {
+    if (dislikeButton.hasClass("btn-danger")) {
+      toggle(cardNumber, 1)
+    }
     contadorLike ++
-    //card.attr("like", contadorLike)
-    //console.log(likeButton.classList)
     likeButton.removeClass("btn-secondary")
     likeButton.addClass("btn-success")
-    //mudar contador like
+    card.attr("data-like", contadorLike)
+    buttonID = '#' + 'like' + cardNumber
+    changeInnerText(buttonID, contadorLike)
   }
 
 }
 
+function dislike(cardNumber) {
+  let card = $(`#card-${cardNumber}`)
+  let contadorDislike = card.data("dislike")
+  let likeButton = $(`#like${cardNumber}`)
+  let dislikeButton = $(`#dislike${cardNumber}`)
 
-function dislike(cardNumber) {}
+  if (dislikeButton.hasClass("btn-danger")) {
+    toggle(cardNumber, 1)
+  }
+  
+  else {
+
+    if (likeButton.hasClass("btn-success")) {
+      toggle(cardNumber, 0)
+    }
+    
+    contadorDislike ++
+    dislikeButton.removeClass("btn-secondary")
+    dislikeButton.addClass("btn-danger")
+    card.attr("data-dislike", contadorDislike)
+    buttonID = '#' + 'dislike' + cardNumber
+    changeInnerText(buttonID, contadorDislike)
+  }
+}
+
+function toggle(cardNumber, mode) {
+
+  //0 -> toggle like
+  //1 -> toggle dislike
+  
+  let card = $(`#card-${cardNumber}`)
+
+  if (mode == 0) {
+    toggledClass = "btn-success"
+    attr = "like"
+  }
+
+  else if (mode == 1) {
+    toggledClass = "btn-danger"
+    attr = "dislike"
+  }
+
+  value = card.attr(`data-${attr}`)
+  buttonID = '#' + attr + cardNumber
+  button = $(buttonID)
+  button.removeClass(toggledClass)
+  button.addClass("btn-secondary")
+  newValue = value - 1
+  card.attr(`data-${attr}`, newValue)
+  // change inner text
+  changeInnerText(buttonID, newValue)
+
+}
+
+function changeInnerText(buttonID, newValue) {
+  let innerSpan = $(buttonID)
+  console.log(innerSpan.text())
+  $(buttonID).toggleClass("far")
+  $(buttonID).toggleClass("fas")
+  innerSpan.find("span").text()
+  //$(`#${buttonID}`).toggleClass("far")
+  //$(`#${buttonID}`).toggleClass("fas")
+  //innerSpan.find("span").html(`<b>${newValue}</b>`)
+}
