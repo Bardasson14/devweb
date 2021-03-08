@@ -30,7 +30,11 @@ $(function () {
   })
 
   $("#like1").click(()=>like(1))
-  $("#dislike1").click(()=>dislike(1))
+  $("#dislike1").click(()=>dislike(1))  
+  $("#like2").click(()=>like(2))
+  $("#dislike2").click(()=>dislike(2))
+  $("#like3").click(()=>like(3))
+  $("#dislike3").click(()=>dislike(3))
 
 });
 
@@ -233,12 +237,9 @@ function toggle(cardNumber, mode) {
 }
 
 function changeInnerText(buttonID, newValue) {
-  let innerSpan = $(buttonID)
-  console.log(innerSpan.text())
-  $(buttonID).toggleClass("far")
-  $(buttonID).toggleClass("fas")
-  innerSpan.find("span").text()
-  //$(`#${buttonID}`).toggleClass("far")
-  //$(`#${buttonID}`).toggleClass("fas")
-  //innerSpan.find("span").html(`<b>${newValue}</b>`)
+  innerSpan = $(buttonID).find("span")
+  innerSpan.html(`<b>  (${newValue}) </b>`)
+  innerSpan.toggleClass("fas")
+  innerSpan.toggleClass("far")
 }
+
