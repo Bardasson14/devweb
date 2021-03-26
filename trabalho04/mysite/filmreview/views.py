@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
 # Create your views here.
+def index(req):
+    pass
+
+def review(req, movie_id):
+    pass
