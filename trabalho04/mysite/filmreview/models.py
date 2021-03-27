@@ -5,9 +5,6 @@ class Movie(models.Model):
     def __str__(self):
         return self.original_title
 
-    def getPosterFile(self):
-        return self.original_title.replace(' ', '')
-
     original_title = models.CharField(max_length=100)
     director_name = models.CharField(max_length=50)
     genre = models.CharField(max_length=20)

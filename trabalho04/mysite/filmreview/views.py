@@ -3,7 +3,7 @@ from filmreview.models import Movie, Review
 
 # Create your views here.
 def index(request):
-    highlights = Movie.objects.all()[:2]
+    highlights = Movie.objects.order_by('-id')[:2]
     print(highlights)
     previous_reviews = Movie.objects.all()[:len(Movie.objects.all())-2]
     print(previous_reviews)

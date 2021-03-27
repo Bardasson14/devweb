@@ -7,34 +7,22 @@
     <div class="my-4 pt-4">
       <h1 class="text-center display-4">Em Destaque</h1>
       <div class="row ml-auto mr-auto">
-        <div class="col-lg-6 text-center">
-          <a href="reviews/lacienaga.html">
-            <figure class="figure pt-3">
-              <img
-                src="{% static 'img/lacienaga.jpg' %}"
-                class="figure-img img-fluid rounded"
-                alt="Pôster do filme La Ciénaga"
-              />
-              <figcaption class="figure-caption text-left">
-                La Ciénaga (2001) - dir.: Lucrecia Martel
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="col-lg-6 text-center">
-          <a href="./reviews/red.html">
-            <figure class="figure pt-3">
-              <img
-                src="{% static 'img/red.jpg' %}"
-                class="figure-img img-fluid rounded"
-                alt="Pôster do filme A Fraternidade é Vermelha"
-              />
-              <figcaption class="figure-caption text-left">
-                A Fraternidade é Vermelha (1994) - dir.: Krzysztof Kieślowski
-              </figcaption>
-            </figure>
-          </a>
-        </div>
+        {% for highlight in highlights %}
+          <div class="col-lg-6 text-center">
+            <a href="reviews/{{highlight.id}}">
+              <figure class="figure pt-3">
+                <img
+                  src="{% static ''|add:highlight.poster_dir %}"
+                  class="figure-img img-fluid rounded"
+                  alt="Pôster do filme La Ciénaga"
+                />
+                <figcaption class="figure-caption text-left">
+                  {{highlight.original_title}} {{highlight.release_year}} - dir.: {{highlight.director_name}}
+                </figcaption>
+              </figure>
+            </a>
+          </div>
+        {% endfor %}
       </div>
     </div>
   </section>
