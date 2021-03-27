@@ -42,48 +42,18 @@
   <section id="reviews-anteriores">
     <h2 class="text-center display-4">Análises anteriores</h2>
     <div class="row ml-auto mr-auto mb-3">
-      <div class="col-lg-4 col-md-6 pt-3">
-        <div class="card" id="card-1" data-like=10 data-dislike=3>
-          <img src="{% static 'img/no.jpg' %}" alt="" />
-          <div class="card-body">
-            <div class="text-center">
-              <h5 class="card-title">No</h5>
-              <p class="card-text text-justify">
-                No Chile de 1988, o governo ditatorial convoca um plebiscito
-                para perguntar se a população apoia os militares. Um
-                publicitário, então, fica responsável pela Campanha do Não,
-                com ideias ousadas para convencer o povo a acabar com o regime
-                militar.
-              </p>
-            </div>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <div class="like-dislike d-inline-flex">
-              <div class="like px-2">
-                <button id="like1" class ="btn btn-secondary"><span class="far fa-thumbs-up"> <b>(10)</b> </span></button>
-              </div>
-              <div class="dislike px-1">
-                <button id="dislike1" class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(3)</b> </span></button>
-              </div>
-            </div>
-            <a href="./reviews/no.html">
-              <button class="btn btn-outline-dark">Leia a análise</button>
-            </a>
-          </div>
-        </div>
-      </div>
+      
+
+      {% for movie in previous_reviews %}
 
       <div class="col-lg-4 col-md-6 pt-3">
         <div class="card" id="card-2" data-like=20 data-dislike=5>
-          <img src="{% static 'img/taxidriver.jpg' %}" alt="" />
+          <!--img src="{% static 'img/taxidriver.jpg' %}" alt="" /-->
           <div class="card-body">
             <div class="text-center">
-              <h5 class="card-title">Taxi Driver</h5>
+              <h5 class="card-title">{{movie.original_title}}</h5>
               <p class="card-text text-justify">
-                O motorista de táxi de Nova York Travis Bickle, veterano da
-                Guerra do Vietnã, reflete constantemente sobre a corrupção da
-                vida ao seu redor e sente-se cada vez mais perturbado com a
-                própria solidão e alienação. <br>
+                {{movie.synopsis}} <br>
               </p>
             </div>
           </div>
@@ -96,14 +66,15 @@
                 <button id="dislike2" class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(5)</b> </span></button>
               </div>
             </div>
-            <a href="./reviews/taxidriver.html">
+            <a href="/reviews/{{movie.id}}">
               <button class="btn btn-outline-dark">Leia a análise</button>
             </a>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-6 pt-3">
+      {% endfor %}
+      <!--div class="col-lg-4 col-md-6 pt-3">
         <div class="card" id="card-3" data-like=25 data-dislike=9>
           <img src="{% static 'img/therewill.jpg' %}" alt="" />
           <div class="card-body">
@@ -131,7 +102,7 @@
             </a>
           </div>
         </div>
-      </div>
+      </div-->
     </div>
   </section>
 

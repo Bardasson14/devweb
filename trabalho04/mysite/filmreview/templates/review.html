@@ -1,143 +1,62 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous"><link href="../assets/css/all.css" rel="stylesheet" />
-    <link href="../assets/css/styles.css" rel="stylesheet" />
-    <title>Sangue Negro (2007) - Análise</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-static-top">
-      <div class="container">
-        <a class="navbar-brand" href="../index.html">Film-Review.com</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#menu"
-          aria-controls="menu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+{% extends 'base.html' %}
+{% load static %}
+{% load mathfilters %}
 
-        <div id="menu" class="collapse navbar-collapse">
-          <ul class="navbar-nav">
-      
+{% block content %}
 
-            <li class="nav-item">
-              <a href="../sobre.html" class="nav-link">Sobre</a>
-            </li>
+<section id="review">
+  <div class="container">
+    <div id="review-header" class = "pt-4 mt-4" style="margin-top: 100px">
+      <h2 class="display-4 text-center">
+        {{ review.title }}
+      </h2>
+    </div>
 
-            <li class="nav-item">
-              <a href="../contato.html" class="nav-link">Contato</a>
-            </li>
-          </ul>
-        </div>
-      </dilv>
-    </nav>
-
-    <section id="review">
-      <div class="container">
-        <div id="review-header" class = "pt-4 mt-4" style="margin-top: 100px">
-          <h2 class="display-4 text-center">
-            Crítica | Sangue Negro
-          </h2>
-        </div>
-
-        <div class="movie-info pt-4 float-lg-right">
-          <ul class="list-group px-0 mx-4">
-            <li class="list-group-item font-weight-bold">Ficha Técnica</li>
-            <li class="list-group-item">Nome original: There Will Be Blood</li>
-            <li class="list-group-item">Diretor(a): Paul Thomas Anderson</li>
-            <li class="list-group-item">Gênero: Drama</li>
-            <li class="list-group-item">País: EUA</li>
-            <li class="list-group-item">Ano de Lançamento: 2007</li>
-            <li class="list-group-item">
-              Onde Assistir: Telecine Play
-            </li>
-            <li class="list-group-item">
-              <div class="row">
-                <div class="col-2">
-                  <span>IMDB:</span>
-                </div>
-                <div class="col-10">
-                  <div class="progress" style="height: 100%">
-                    <div
-                      class="progress-bar bg-success"
-                      role="progressbar"
-                      style="width: 82%"
-                      aria-valuenow="82"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    >
-                      <span class="text-light text-display-4">8,2</span>
-                    </div>
-                  </div>
+    <div class="movie-info pt-4 float-lg-right">
+      <ul class="list-group d-block mx-4">
+        <li class="list-group-item font-weight-bold">Ficha Técnica</li>
+        <li class="list-group-item">Nome original: {{movie.original_title}}</li>
+        <li class="list-group-item">Diretor(a): {{movie.director_name}}</li>
+        <li class="list-group-item">Gênero: {{movie.genre}}</li>
+        <li class="list-group-item">País: {{movie.country}}</li>
+        <li class="list-group-item">Ano de Lançamento: {{movie.release_year}}</li>
+        <li class="list-group-item">
+            <div class="progress text-center" style="height: 100%; width: 100%;">
+                <div
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  style="width: {{ movie.avg_imdb|mul:10}}%;"
+                  aria-valuenow="{{ movie.avg_imdb|mul:10}}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <span class="text-light text-display-4 font-weight-bold">IMDB: {{movie.avg_imdb}}</span>
                 </div>
               </div>
-            </li>
-          </ul>
-          <br />
-        </div>
-
-
-        <div id = "review-body" class = "pt-4 mt-2">
-          <h6 class="font-italic">
-            Texto retirado de:
-            <a href="https://www.papodecinema.com.br/filmes/sangue-negro/">https://www.papodecinema.com.br/filmes/sangue-negro/</a>
-            <br>
-          </h6>
         
-          <p>
-            Uma epopeia pelo coração da América capitalista em formação e refém da sanha insaciável do progresso. Sangue Negro, de Paul Thomas Anderson – talvez o maior cineasta norte-americano de sua geração –, pode ser colocado ao lado de alguns filmes de John Ford quanto à sua capacidade de fazer um recorte cartográfico da História dos Estados Unidos. Assim como faroestes de Ford fornecem pontos relevantes e esclarecedores acerca da constituição de um tecido social cujas tramas são percebidas até a atualidade, com variações inerentes ao decurso do tempo, este longa mergulha no núcleo da ganância exposta pela exploração desenfreada de recursos e gente. O protagonista é Daniel Plainview (Daniel Day-Lewis), homem que nos primeiros minutos demonstra sua enorme tenacidade ao deparar-se com uma grave adversidade enquanto minera solitariamente num buraco inóspito. O realizador, em meio aos movimentos iniciais, quase sem recorrer às falas, desenha a personalidade do sujeito que parece posteriormente agir como uma tormenta.
-          </p>
+        </li>
+      </ul>
+      <br />
+    </div>
 
-          <p>
-            De gênese escrutinada com sofisticação em Sangue Negro, os Estados Unidos dos quais Daniel se constitui símbolo é um império extrativista, num fluxo que inexoravelmente envolve a subjugação de uns em função do sucesso de outros. Aqui, a drenagem não se restringe ao processo por meio do qual se retira o petróleo, o chamado "ouro negro", das profundezas do solo a fim de que ele enriqueça o proprietário e alavanque a economia – lembrando que o enredo se passa num instante em que os automóveis começam a desempenhar um papel fundamental nos EUA. A maneira como Daniel desertifica emocionalmente tudo ao seu redor é equivalente metaforicamente ao trabalho de sugar do solo o valioso combustível fóssil. A ficção passa pela documentação de uma era em plena transformação, com fidelidade não apenas no que tange ao vestuário, aos instrumentos e aos afazeres, mas também no que concerne à movimentação dessas engrenagens sociais.
 
-          </p>
+    <div id = "review-body" class = "pt-4 mt-2">
+      <h6 class="font-italic">
+        Texto retirado de:
+        <a href="{{review.original_source}}">{{review.original_source}}</a>
+        <br>
+      </h6>
+      
+      <p class="justify">{{review.text|linebreaks}}</p>
 
-          <p>
-            Em Sangue Negro o progresso é mediado por dois poderes de avareza consonante. O primeiro emana do empresário que fica evidentemente rico, partindo da sensibilização dos pequenos proprietários, vendendo-se como arauto do futuro comunitário, mas cuja premissa é o consumo desenfreado dos bens que vêm da terra. O segundo é projetado da esfera religiosa, representada por Eli (Paul Dano), pastor que, desde os instantes iniciais, lê o forasteiro como uma oportunidade de estender seus domínios. É como se ele voluntariamente acordasse com o demônio para ampliar status e poder. Curioso que seja o gêmeo desse profeta a entregar de bandeja ao empresário a pureza das redondezas, aquele que pensa primeiro em si, sem importar-se com malefícios causados por alertar o predador faminto. A questão familiar é essencial, inclusive, a julgar pela forma como o protagonista exibe a necessidade de escorar-se em alguém para praticar a sua "onipotência".
-          </p>
+    </div>
 
-          <p>
-            Quando as circunstâncias levam Daniel a abandonar o filho surdo, surge o irmão mais novo para desempenhar a função de imediato, daquele que funciona como uma sombra. É sintomático que os ora trovejantes, ora serenos discursos de Daniel e de Eli sejam embebidos de falácias sobre a valorização da comunidade e do aspecto familiar basilar de seus negócios supostamente diferentes. O estratagema passa por apelar ao tradicional e, paradoxalmente, pregar a necessidade de mudanças, do novo. Algo semelhante com o que políticos vêm fazendo atualmente, não somente nos Estados Unidos, berço desses falsos messias amparados por enunciados superficialmente fraternos, mas orientados pela ambição. Num andamento narrativo milimetricamente compassado, enriquecido por uma conjugação impressionante entre os silêncios reveladores e um texto não menos pungente, Paul Thomas Anderson conta, ainda, com uma trilha sonora marcante e vital, a cargo de Jonny Greenwood e dois intérpretes em estado de graça para criar esta verdadeira obra-prima.
-          </p>
-
-          <p>
-            Paul Dano é o líder carismático e histriônico, habilitado a controlar a coletividade local por se autointitular escolhido por Deus. Já Daniel Day-Lewis, num dos maiores desempenhos de sua enorme carreira, é o emissário do dinheiro, da nova divindade que em Sangue Negro é apresentada como potencialmente substituta. Se antes os camponeses rogavam aos céus por melhorias, a alguns deles agora basta ceder controle ao homem que possui meios. Daniel é como o diabo que promete satisfazer desejos desde que o postulante dê algo em troca, neste caso o sangue da terra, o sumo que escorre por baixo de seus pés. Paul Thomas Anderson revolve o âmago de um sujeito inescrupuloso, orientado apenas pela acumulação, incapaz de sentir-se saciado, delineando um profundo estudo de personagem. Ao secar fontes, Daniel parte a outras. É o símbolo do que os Estados Unidos preconiza com sua ânsia por alimentar a besta do futuro com diversos dos recursos finitos.
-        </p>
-        </div>
-
-        <div id="review-nota">
-          <h4 class="font-weight-bold display-4">
-            Avaliação: <span class="badge badge-success">10</span>
-          </h4>
-          <br /><br />
-        </div>
-      </div>
-    </section>
-
-    <footer>
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/7895937d91.js" crossorigin="anonymous"></script> </footer>
-    
-  </body>
-</html>
+    <div id="review-nota">
+      <h4 class="font-weight-bold display-4">
+        Avaliação: <span class="badge badge-success">{{review.avaliation}}</span>
+      </h4>
+      <br /><br />
+    </div>
+  </div>
+</section>
+{% endblock content %}
