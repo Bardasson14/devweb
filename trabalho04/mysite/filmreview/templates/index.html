@@ -3,6 +3,8 @@
 
 {% block content %}
 
+{% include 'partials/newsletter-jumbotron.html' %}
+
   <section id="destaque">
     <div class="my-4 pt-4">
       <h1 class="text-center display-4">Em Destaque</h1>
@@ -35,11 +37,11 @@
       {% for movie in previous_reviews %}
 
       <div class="col-lg-4 col-md-6 pt-3">
-        <div class="card" id="card-2" data-like=20 data-dislike=5>
+        <div class="card" id="card-{{movie.id}}" data-like=20 data-dislike=5>
           <img src="{% static ''|add:movie.poster_dir %}" alt="" >
           <div class="card-body">
             <div class="text-center">
-              <h5 class="card-title">{{movie.original_title}}</h5>
+              <h5 class="card-title">{{movie.original_title}} ({{movie.release_year}})</h5>
               <p class="card-text text-justify">
                 {{movie.synopsis}} <br>
               </p>

@@ -29,6 +29,7 @@ $(function () {
     }
   })
 
+  //Melhorar
   $("#like1").click(()=>like(1))
   $("#dislike1").click(()=>dislike(1))  
   $("#like2").click(()=>like(2))

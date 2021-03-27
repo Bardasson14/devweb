@@ -15,3 +15,12 @@ def review(request, movie_id):
     review = Review.objects.get(movie_id=movie_id)
     context = {'movie': movie, 'review': review}
     return render(request, 'review.html', context)
+
+def about(request):
+    return render(request, 'sobre.html')
+
+def contact(request):
+    return render(request, 'contato.html')
+
+def newsletter(request):
+    return render(request, 'newsletter.html')

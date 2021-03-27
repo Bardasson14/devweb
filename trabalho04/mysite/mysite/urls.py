@@ -18,7 +18,10 @@ from django.urls import path
 from filmreview import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', views.index),
+    path('admin', admin.site.urls),
+    path('about', views.about),
+    path('contact', views.contact),
+    path('newsletter', views.newsletter),
     path('reviews/<int:movie_id>', views.review),
-    path('', views.index)
 ]

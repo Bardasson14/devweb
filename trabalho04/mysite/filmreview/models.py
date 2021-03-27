@@ -24,3 +24,4 @@ class Review(models.Model):
     title = models.CharField(max_length=40)
     text = models.TextField()
     avaliation = models.FloatField(null=False)
+

@@ -1,134 +1,67 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    
-    <link href="assets/css/styles.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
-    <title>Film-Review</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-static-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Film-Review.com</a>
+{% extends 'base.html' %}
+{% load static %}
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#menu"
-          aria-controls="menu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div id="menu" class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a href="sobre.html" class="nav-link">Sobre</a>
-            </li>
-            <li class="nav-item active">
-              <a href="contato.html" class="nav-link">Contato</a>
-            </li>
-          </ul>
-        </div>
+{% block content %}
+<section id="form-contato">
+  <div class="container my-3" style="max-width: 80%">
+    <h1 class="display-4 mb-4">Dúvidas? Sugestões? Entre em contato</h1>
+    <form>
+      <div class="form-group">
+        <label for="nome">Nome: </label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          id="nome"
+          placeholder="Informe seu nome"
+        />
+        <div class="invalid-feedback">Erro!</div>
       </div>
-    </nav>
 
-    <section id="form-contato">
-      <div class="container my-3" style="max-width: 80%">
-        <h1 class="display-4 mb-4">Dúvidas? Sugestões? Entre em contato</h1>
-        <form>
-          <div class="form-group">
-            <label for="nome">Nome: </label>
-            <input
-              type="text"
-              class="form-control form-control-sm"
-              id="nome"
-              placeholder="Informe seu nome"
-            />
-            <div class="invalid-feedback">Erro!</div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">E-Mail:</label>
-            <input
-              type="email"
-              class="form-control form-control-sm"
-              id="email"
-              placeholder="exemplo@email.com"
-            />
-            <div class="invalid-feedback">Erro!</div>
-          </div>
-
-          <div class="form-group">
-            <label for="assunto">Assunto:</label>
-            <input
-              type="text"
-              class="form-control form-control-sm"
-              id="assunto"
-              placeholder="Motivo do Contato"
-            />
-            <div class="invalid-feedback">Erro!</div>
-          </div>
-
-          <div class="form-group">
-            <label for="msg">Mensagem:</label>
-            <textarea
-              name="message"
-              id="msg"
-              class="form-control form-control-sm"
-              cols="30"
-              rows="10"
-              placeholder="Digite aqui a sua mensagem"
-            ></textarea>
-
-            <div class="invalid-feedback">Erro!</div>
-          </div>
-
-          <button
-            class="btn btn-primary btn-lg btn-block"
-            type="button"
-            id="botao-form-contato"
-          >
-            Entrar em contato
-          </button>
-        </form>
+      <div class="form-group">
+        <label for="email">E-Mail:</label>
+        <input
+          type="email"
+          class="form-control form-control-sm"
+          id="email"
+          placeholder="exemplo@email.com"
+        />
+        <div class="invalid-feedback">Erro!</div>
       </div>
-    </section>
 
-    <footer>
-      <script
-        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"
-      ></script>
-      <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"
-      ></script>
-      <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"
-      ></script>
-      <script src="./assets/js/script.js"></script>
-    <script src="https://kit.fontawesome.com/7895937d91.js" crossorigin="anonymous"></script> </footer>
-  </body>
-</html>
+      <div class="form-group">
+        <label for="assunto">Assunto:</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          id="assunto"
+          placeholder="Motivo do Contato"
+        />
+        <div class="invalid-feedback">Erro!</div>
+      </div>
+
+      <div class="form-group">
+        <label for="msg">Mensagem:</label>
+        <textarea
+          name="message"
+          id="msg"
+          class="form-control form-control-sm"
+          cols="30"
+          rows="10"
+          placeholder="Digite aqui a sua mensagem"
+        ></textarea>
+
+        <div class="invalid-feedback">Erro!</div>
+      </div>
+
+      <button
+        class="btn btn-primary btn-lg btn-block"
+        type="button"
+        id="botao-form-contato"
+      >
+        Entrar em contato
+      </button>
+    </form>
+  </div>
+</section>
+
+{% endblock content %}
