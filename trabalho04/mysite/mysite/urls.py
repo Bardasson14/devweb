@@ -19,7 +19,7 @@ from filmreview import views
 
 urlpatterns = [
     path('', views.index),
-    path('admin', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('about', views.about),
     path('contact', views.contact),
     path('newsletter', views.newsletter),

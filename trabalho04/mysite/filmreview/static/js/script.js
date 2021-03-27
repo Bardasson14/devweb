@@ -29,13 +29,15 @@ $(function () {
     }
   })
 
+  $('.like').click(function(event){
+    event.stopPropagation()
+    like(this.id[2])
+  })
   
-  for (var i=1; i<=(document.getElementsByClassName(".like").length); i++) {
-    //print(document.getElementsByClassName(".like").length)
-    //console.log("a")
-    $(`#like${i}`).click(()=>like(i))
-    $(`#dislike${i}`).click(()=>dislike(i))  
-  }
+  $('.dislike').click(function(event){
+    event.stopPropagation()
+    dislike(this.id[2])
+  })
 
 });
 
@@ -163,9 +165,9 @@ function like(cardNumber) {
   console.log(cardNumber)
   let card = $(`#card-${cardNumber}`)
   let contadorLike = card.data("like")
-  let likeButton = $(`#like${cardNumber}`)
-  let dislikeButton = $(`#dislike${cardNumber}`)
-
+  let likeButton = $(`#l-${cardNumber}`)
+  let dislikeButton = $(`#d-${cardNumber}`)
+  //console.log(card, likeButton, dislikeButton)
   if (likeButton.hasClass("btn-success")) {
     toggle(cardNumber, 0)
   }
@@ -174,11 +176,12 @@ function like(cardNumber) {
     if (dislikeButton.hasClass("btn-danger")) {
       toggle(cardNumber, 1)
     }
+
     contadorLike ++
     likeButton.removeClass("btn-secondary")
     likeButton.addClass("btn-success")
     card.attr("data-like", contadorLike)
-    buttonID = '#' + 'like' + cardNumber
+    buttonID = '#' + 'l-' + cardNumber
     changeInnerText(buttonID, contadorLike)
   }
 
@@ -187,8 +190,8 @@ function like(cardNumber) {
 function dislike(cardNumber) {
   let card = $(`#card-${cardNumber}`)
   let contadorDislike = card.data("dislike")
-  let likeButton = $(`#like${cardNumber}`)
-  let dislikeButton = $(`#dislike${cardNumber}`)
+  let likeButton = $(`#l-${cardNumber}`)
+  let dislikeButton = $(`#d-${cardNumber}`)
 
   if (dislikeButton.hasClass("btn-danger")) {
     toggle(cardNumber, 1)
@@ -204,7 +207,7 @@ function dislike(cardNumber) {
     dislikeButton.removeClass("btn-secondary")
     dislikeButton.addClass("btn-danger")
     card.attr("data-dislike", contadorDislike)
-    buttonID = '#' + 'dislike' + cardNumber
+    buttonID = '#' + 'd-' + cardNumber
     changeInnerText(buttonID, contadorDislike)
   }
 }
@@ -227,7 +230,7 @@ function toggle(cardNumber, mode) {
   }
 
   value = card.attr(`data-${attr}`)
-  buttonID = '#' + attr + cardNumber
+  buttonID = '#' + attr[0] + '-' + cardNumber
   button = $(buttonID)
   button.removeClass(toggledClass)
   button.addClass("btn-secondary")

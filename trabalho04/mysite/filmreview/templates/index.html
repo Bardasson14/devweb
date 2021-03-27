@@ -16,7 +16,8 @@
                 <img
                   src="{% static ''|add:highlight.poster_dir %}"
                   class="figure-img img-fluid rounded"
-                  alt="Pôster do filme La Ciénaga"
+                  alt="Pôster do filme {{movie.original_title}}"
+                  style="width: 1600; height: 900;"
                 />
                 <figcaption class="figure-caption text-left">
                   {{highlight.original_title}} ({{highlight.release_year}}) - dir.: {{highlight.director_name}}
@@ -37,12 +38,12 @@
       {% for movie in previous_reviews %}
 
       <div class="col-lg-4 col-md-6 pt-3">
-        <div class="card" id="card-{{movie.id}}" data-like=20 data-dislike=5>
+        <div class="card h-100" id="card-{{movie.id}}" data-like=20 data-dislike=5>
           <img src="{% static ''|add:movie.poster_dir %}" alt="" >
           <div class="card-body">
             <div class="text-center">
               <h5 class="card-title">{{movie.original_title}} ({{movie.release_year}})</h5>
-              <p class="card-text text-justify">
+              <p class="card-text text-justify overflow-auto">
                 {{movie.synopsis}} <br>
               </p>
             </div>
@@ -50,10 +51,10 @@
           <div class="card-footer d-flex justify-content-between">
             <div class="like-dislike d-inline-flex">
               <div class="like px-1">
-                <button id="like{{movie.id}}" class = "btn btn-secondary" ><span class="far fa-thumbs-up"> <b>(20)</b> </span></button>
+                <button id="l-{{movie.id}}" class = "btn btn-secondary like" ><span class="far fa-thumbs-up"> <b>(20)</b> </span></button>
               </div>
               <div class="dislike px-1">
-                <button id="dislike{{movie.id}}" class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(5)</b> </span></button>
+                <button id="d-{{movie.id}}" class = "btn btn-secondary dislike"> <span class="far fa-thumbs-down"> <b>(5)</b> </span></button>
               </div>
             </div>
             <a href="/reviews/{{movie.id}}">
@@ -64,35 +65,7 @@
       </div>
 
       {% endfor %}
-      <!--div class="col-lg-4 col-md-6 pt-3">
-        <div class="card" id="card-3" data-like=25 data-dislike=9>
-          <img src="{% static 'img/therewill.jpg' %}" alt="" />
-          <div class="card-body">
-            <div class="text-center">
-              <h5 class="card-title">Sangue Negro</h5>
-              <p class="card-text text-justify">
-                Falido, o minerador de prata Daniel Plainview decide começar
-                vida nova e buscar a fortuna com o filho em local rico em
-                petróleo, mas seus interesses entram em conflito com os do
-                pastor Eli Sunday, a figura mais influente da cidade.
-              </p>
-            </div>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <div class="like-dislike d-inline-flex">
-              <div class="like px-1">
-                <button id="like3" class = "btn btn-secondary" ><span class="far fa-thumbs-up"> <b>(25)</b> </span></button>
-              </div>
-              <div class="dislike px-1">
-                <button id="dislike3" class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(9)</b> </span></button>
-              </div>
-            </div>
-            <a href="./reviews/therewillbeblood.html">
-              <button class="btn btn-outline-dark">Leia a análise</button>
-            </a>
-          </div>
-        </div>
-      </div-->
+
     </div>
   </section>
 
