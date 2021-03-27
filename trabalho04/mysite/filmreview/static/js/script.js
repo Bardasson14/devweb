@@ -29,13 +29,13 @@ $(function () {
     }
   })
 
-  //Melhorar
-  $("#like1").click(()=>like(1))
-  $("#dislike1").click(()=>dislike(1))  
-  $("#like2").click(()=>like(2))
-  $("#dislike2").click(()=>dislike(2))
-  $("#like3").click(()=>like(3))
-  $("#dislike3").click(()=>dislike(3))
+  
+  for (var i=1; i<=(document.getElementsByClassName(".like").length); i++) {
+    //print(document.getElementsByClassName(".like").length)
+    //console.log("a")
+    $(`#like${i}`).click(()=>like(i))
+    $(`#dislike${i}`).click(()=>dislike(i))  
+  }
 
 });
 
@@ -160,6 +160,7 @@ function validaMsg() {
 }
 
 function like(cardNumber) {
+  console.log(cardNumber)
   let card = $(`#card-${cardNumber}`)
   let contadorLike = card.data("like")
   let likeButton = $(`#like${cardNumber}`)

@@ -19,7 +19,7 @@
                   alt="Pôster do filme La Ciénaga"
                 />
                 <figcaption class="figure-caption text-left">
-                  {{highlight.original_title}} {{highlight.release_year}} - dir.: {{highlight.director_name}}
+                  {{highlight.original_title}} ({{highlight.release_year}}) - dir.: {{highlight.director_name}}
                 </figcaption>
               </figure>
             </a>
@@ -50,10 +50,10 @@
           <div class="card-footer d-flex justify-content-between">
             <div class="like-dislike d-inline-flex">
               <div class="like px-1">
-                <button id="like2" class = "btn btn-secondary" ><span class="far fa-thumbs-up"> <b>(20)</b> </span></button>
+                <button id="like{{movie.id}}" class = "btn btn-secondary" ><span class="far fa-thumbs-up"> <b>(20)</b> </span></button>
               </div>
               <div class="dislike px-1">
-                <button id="dislike2" class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(5)</b> </span></button>
+                <button id="dislike{{movie.id}}" class = "btn btn-secondary"> <span class="far fa-thumbs-down"> <b>(5)</b> </span></button>
               </div>
             </div>
             <a href="/reviews/{{movie.id}}">
