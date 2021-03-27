@@ -22,6 +22,7 @@
         <li class="list-group-item">Ano de Lançamento: {{movie.release_year}}</li>
         <li class="list-group-item">
             <div class="progress text-center" style="height: 100%; width: 100%;">
+              {% if movie.avg_imdb >= 8 %}
                 <div
                   class="progress-bar bg-success"
                   role="progressbar"
@@ -30,7 +31,31 @@
                   aria-valuemin="0"
                   aria-valuemax="100"
                 >
-                  <span class="text-light text-display-4 font-weight-bold">IMDB: {{movie.avg_imdb}}</span>
+                <span class="text-light text-display-4 font-weight-bold">IMDB: {{movie.avg_imdb}}</span>
+
+              {% elif movie.avg_imdb >= 5 and movie.avg_imdb < 8 %}
+                <div
+                class="progress-bar bg-warning"
+                role="progressbar"
+                style="width: {{ movie.avg_imdb|mul:10}}%;"
+                aria-valuenow="{{ movie.avg_imdb|mul:10}}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                >
+                <span class="text-dark text-display-4 font-weight-bold">IMDB: {{movie.avg_imdb}}</span>
+
+              {% else %}
+                <div
+                  class="progress-bar bg-danger"
+                  role="progressbar"
+                  style="width: {{ movie.avg_imdb|mul:10}}%;"
+                  aria-valuenow="{{ movie.avg_imdb|mul:10}}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                <span class="text-light text-display-4 font-weight-bold">IMDB: {{movie.avg_imdb}}</span>
+              {% endif %}
+
                 </div>
               </div>
         
@@ -53,7 +78,14 @@
 
     <div id="review-nota">
       <h4 class="font-weight-bold display-4">
-        Avaliação: <span class="badge badge-success text-center">{{review.avaliation}}</span>
+        {% if review.avaliation >= 8 %}
+        Avaliação: <span class="badge badge-success">{{review.avaliation}}</span>
+        {% elif review.avaliation >= 5 and review.avaliation < 8 %}
+        Avaliação: <span class="badge badge-warning text-dark px-2">{{review.avaliation}}</span>
+        {% else %}
+        Avaliação: <span class="badge badge-danger">{{review.avaliation}}</span>
+        {% endif %}
+
       </h4>
       <br /><br />
     </div>
