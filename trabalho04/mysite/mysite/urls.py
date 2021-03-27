@@ -19,5 +19,6 @@ from filmreview import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('reviews/<int:movie_id>', views.review)
+    path('reviews/<int:movie_id>', views.review),
+    path('', views.index)
 ]
