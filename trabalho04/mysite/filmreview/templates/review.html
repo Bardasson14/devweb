@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load mathfilters %}
+{% load custom_tags %}
 
 {% block content %}
 
@@ -26,8 +26,8 @@
                 <div
                   class="progress-bar bg-success"
                   role="progressbar"
-                  style="width: {{ movie.avg_imdb|mul:10}}%;"
-                  aria-valuenow="{{ movie.avg_imdb|mul:10}}"
+                  style="width: {% x10 movie.avg_imdb %}%;"
+                  aria-valuenow="{% x10 movie.avg_imdb %}"
                   aria-valuemin="0"
                   aria-valuemax="100"
                 >
@@ -37,8 +37,8 @@
                 <div
                 class="progress-bar bg-warning"
                 role="progressbar"
-                style="width: {{ movie.avg_imdb|mul:10}}%;"
-                aria-valuenow="{{ movie.avg_imdb|mul:10}}"
+                style="width: {% x10 movie.avg_imdb %}%;"
+                aria-valuenow="{% x10 movie.avg_imdb %}"
                 aria-valuemin="0"
                 aria-valuemax="100"
                 >
@@ -48,8 +48,8 @@
                 <div
                   class="progress-bar bg-danger"
                   role="progressbar"
-                  style="width: {{ movie.avg_imdb|mul:10}}%;"
-                  aria-valuenow="{{ movie.avg_imdb|mul:10}}"
+                  style="width: {% x10 movie.avg_imdb %}%;"
+                  aria-valuenow="{% x10 movie.avg_imdb %}"
                   aria-valuemin="0"
                   aria-valuemax="100"
                 >
