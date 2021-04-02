@@ -79,7 +79,7 @@ def atualiza_carrinho(request):
         print('***** qtd no carrinho = ' + str(qtd) +
               '  valor do carrinho = ' + str(preco_carrinho))
 
-        locale.setlocale(locale.LC_ALL, 'pt_BR')
+        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
         preco_carrinho = locale.currency(preco_carrinho, grouping=True)
         preco_total = Decimal(preco_total)
         preco_total = locale.currency(preco_total, grouping=True)

@@ -8,6 +8,7 @@ urlpatterns = [
     path('', lambda request: redirect('carrinho/')),
     path('carrinho/', include('carrinho.urls')),
     path('produto/', include('produto.urls')),
+    path('fornecedor/', include('fornecedor.urls')),
     path('admin/', admin.site.urls),
     path('autenticacao/', include('autenticacao.urls')),
 ]
