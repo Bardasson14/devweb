@@ -11,6 +11,7 @@ from fornecedor.models import Fornecedor
 # @staff_member_required(login_url='/autenticacao/login')
 # @user_passes_test(lambda u: u.is_superuser)
 # @user_passes_test(lambda u: u.is_staff)
+
 def lista_fornecedor(request):
     form = PesquisaFornecedorForm(request.GET)
     if form.is_valid():
@@ -22,10 +23,10 @@ def lista_fornecedor(request):
         pagina = request.GET.get('pagina')
         page_obj = paginator.get_page(pagina)
 
-        print(lista_de_fornecedors)
-        print(page_obj)
+        print("list: ", lista_de_fornecedors)
+        print("page_obj: ", page_obj)
 
-        return render(request, 'fornecedor/pesquisa_fornecedor.html', { 'fornecedors': page_obj,
+        return render(request, 'fornecedor/pesquisa_fornecedor.html', { 'fornecedores': page_obj,
                                                                   'form': form,
                                                                   'nome': nome })
     else:
@@ -33,6 +34,8 @@ def lista_fornecedor(request):
 
 
 # @user_passes_test(lambda u: u.is_staff)
+
+'''
 def cadastra_fornecedor(request):
 
     if request.POST:
@@ -65,7 +68,7 @@ def cadastra_fornecedor(request):
         fornecedor_form = FornecedorForm()
 
     return render(request, 'fornecedor/cadastra_fornecedor.html', {'form': fornecedor_form})
-
+'''
 
 # @user_passes_test(lambda u: u.is_staff)
 def exibe_fornecedor(request, id):
