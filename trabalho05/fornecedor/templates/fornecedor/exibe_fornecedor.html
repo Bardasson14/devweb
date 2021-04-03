@@ -27,43 +27,29 @@
       {% endif %}
 
       <div class="row mb-3">
-         <div class="col-lg-3 col-md-4">
-            {% if produto.imagem %}
-               <img class="mr-3" style="width: 210px"
-                    src="{{produto.imagem.url}}" alt="{{ produto.nome }}">
-            {% else %}
-               <div class="text-md-center mb-md-0 mb-2">
-                  Imagem não disponível
-               </div>
-            {% endif %}
-         </div>
          <div class="col-lg-9 col-md-8">
             <div class="row">
-               <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Categoria</div>
-               <div class="col-xl-10 col-lg-9 col-8">{{ produto.categoria }}</div>
+               <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">CNPJ</div>
+               <div class="col-xl-10 col-lg-9 col-8">{{ fornecedor.cnpj }}</div>
                <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Nome</div>
-               <div class="col-xl-10 col-lg-9 col-8">{{ produto.nome }} ({{ produto.descricao }})</div>
-               <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Preço</div>
-               <div class="col-xl-10 col-lg-9 col-8">{{ produto.preco }}</div>
-               <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Estoque</div>
-               <div class="col-xl-10 col-lg-9 col-8">{{ produto.qtd_estoque }}</div>
-               <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Data Cadastro</div>
-               <div class="col-xl-10 col-lg-9 col-8">{{ produto.data_cadastro | date:'d/m/Y' }}</div>
-               <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Disponível</div>
-               <div class="col-xl-10 col-lg-9 col-8">{{ produto.get_disponivel }}</div>
+               <div class="col-xl-10 col-lg-9 col-8">{{ fornecedor.nome }}</div>
+               <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Telefone</div>
+               <div class="col-xl-10 col-lg-9 col-8">{{ fornecedor.telefone }}</div>
+               <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Endereço</div>
+               <div class="col-xl-10 col-lg-9 col-8">{{ fornecedor.endereco }}</div>
             </div>
          </div>
       </div>
 
-      {% if produto.id %}
+      {% if fornecedor.cnpj %}
          <div class="form-group row">
             <div class="col-12">
                <div class="form-inline">
-                  <a href="{% url 'produto:edita_produto' produto.id %}" class="btn btn-primary mr-3">
+                  <a href="{% url 'fornecedor:edita_fornecedor' fornecedor.id %}" class="btn btn-primary mr-3">
                      <img src="{% static 'images/skin/database_edit.png' %}" /> Editar
                   </a>
 
-                  <form action="{% url 'produto:remove_produto' %}" method="POST">
+                  <form action="{% url 'fornecedor:remove_fornecedor' %}" method="POST">
                      {% csrf_token %}
                      <button type="submit" class="btn btn-danger">
                         <img src="{% static 'images/skin/database_delete.png' %}"> Remover

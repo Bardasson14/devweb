@@ -7,6 +7,20 @@
 {% endblock %}
 
 {% block corpo %}
+
+   {% if messages %}
+      <div class="mb-3">
+         {% for message in messages %}
+            <ul class="list-group rounded">
+               <li style="padding-top: 7px; padding-bottom: 7px"
+                     class="list-group-item list-group-item-info">
+                  {{ message }}
+               </li>
+            </ul>
+         {% endfor %}
+      </div>
+   {% endif %}
+
    <div class='mb-4'>
       <h5>Pesquisa de Fornecedores</h5>
       <hr class='mt-0'>
@@ -52,7 +66,9 @@
                {% for fornecedor in fornecedores %}
                   <tr>
                      <td style="width:30%;" class="text-center align-middle">
-                      {{fornecedor.nome}}
+                        <a href = "{% url 'fornecedor:exibe_fornecedor' fornecedor.id %}">
+                           {{fornecedor.nome}}
+                        </a>
                      </td>
                      <td style="width:30%;" class="text-center align-middle">
                         {{fornecedor.cnpj}}

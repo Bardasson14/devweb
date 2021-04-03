@@ -34,13 +34,11 @@ def lista_fornecedor(request):
 
 
 # @user_passes_test(lambda u: u.is_staff)
-
-'''
 def cadastra_fornecedor(request):
-
+    print(request)
     if request.POST:
         fornecedor_id = request.session.get('fornecedor_id')
-        print('fornecedor_id na sessão = ' + str(fornecedor_id))
+        
         if fornecedor_id:
             fornecedor = get_object_or_404(Fornecedor, pk=fornecedor_id)
             fornecedor_form = FornecedorForm(request.POST, request.FILES, instance=fornecedor)
@@ -59,8 +57,7 @@ def cadastra_fornecedor(request):
 
             return redirect('fornecedor:exibe_fornecedor', id=fornecedor.id)
     else:
-        # if 'fornecedor_id' in request.session:
-        #     del request.session['fornecedor_id']
+        
         try:
             del request.session['fornecedor_id']
         except KeyError:
@@ -68,7 +65,7 @@ def cadastra_fornecedor(request):
         fornecedor_form = FornecedorForm()
 
     return render(request, 'fornecedor/cadastra_fornecedor.html', {'form': fornecedor_form})
-'''
+
 
 # @user_passes_test(lambda u: u.is_staff)
 def exibe_fornecedor(request, id):
@@ -89,12 +86,10 @@ def edita_fornecedor(request, id):
 def remove_fornecedor(request):
     fornecedor_id = request.session.get('fornecedor_id_del')
     fornecedor = get_object_or_404(Fornecedor, id=fornecedor_id)
-    fornecedor.imagem.delete()
     fornecedor.delete()
     del request.session['fornecedor_id_del']
     messages.add_message(request, messages.INFO, 'Fornecedor removido com sucesso.')
-    return render(request, 'fornecedor/exibe_fornecedor.html', {'fornecedor': fornecedor})
-
+    return lista_fornecedor(request)
 
 
 
