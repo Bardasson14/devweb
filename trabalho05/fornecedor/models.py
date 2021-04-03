@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from localflavor.br import forms
 
 class Fornecedor(models.Model):
     cnpj = models.CharField(max_length=18, unique=True)

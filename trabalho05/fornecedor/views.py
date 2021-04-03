@@ -47,7 +47,6 @@ def cadastra_fornecedor(request):
 
         if fornecedor_form.is_valid():
             fornecedor = fornecedor_form.save(commit=False)
-            fornecedor.slug = slugify(fornecedor.nome)
             fornecedor.save()
             if fornecedor_id:
                 messages.add_message(request, messages.INFO, 'Fornecedor alterado com sucesso!')
