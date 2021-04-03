@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 class Fornecedor(models.Model):
-    cnpj = models.CharField(max_length=13, unique=True)
+    cnpj = models.CharField(max_length=18, unique=True)
     nome = models.CharField(max_length=100)
     telefone = models.CharField(max_length=13, unique=True)
     endereco = models.CharField(max_length=120, unique=True)

@@ -46,5 +46,6 @@ class FornecedorForm(forms.ModelForm):
 
     def clean_cnpj(self):
         cnpj = self.cleaned_data['cnpj']
-        print(cnpj)
+        for char in ['.', '-', '/']:
+            cnpj = cnpj.replace(char, '')
         return cnpj
