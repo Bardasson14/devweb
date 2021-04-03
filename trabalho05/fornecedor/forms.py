@@ -53,3 +53,4 @@ class FornecedorForm(forms.ModelForm):
     def cnpj_validator(self, value):
         if (value.isdecimal() and len(value)>14):
             raise ValidationError('CNPJ contém mais do que 14 dígitos numéricos')
+        return value
