@@ -37,7 +37,6 @@ def remove_produto(request, id):
 def atualiza_produto(request, id):
     if request.POST:
         produto = get_object_or_404(Produto, pk=id)
-        print(request.POST.get('qtd'))
         produto.qtd = request.POST.get('qtd')
         produto.save()
         return JsonResponse({'success': "Produto atualizado com sucesso"})
