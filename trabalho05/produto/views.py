@@ -34,6 +34,7 @@ def lista_produto(request):
 
 # @user_passes_test(lambda u: u.is_staff)
 def cadastra_produto(request):
+    
 
     if request.POST:
         produto_id = request.session.get('produto_id')

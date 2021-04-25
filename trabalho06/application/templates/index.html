@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+    <h1>Cadastro de Produto</h1>
+
+    <div id="form">
+        
+    </div>
+    
+   <br>
+
+    <div id="tabela">
+        
+    </div>
+
+    <br><br><br>
+
+    
+{% endblock %}
+
+
+{% block domready %}
+    $.get("/cadastra_produto", function(resposta) { $("#form").html(resposta)})
+    $.get("/lista_produtos", function(resposta) {$("#tabela").html(resposta)})
+    $("#form").submit(function(e) {
+        e.preventDefault();
+        var form = $(this)
+
+        $.ajax({
+            type: "POST",
+            url: "registra_produto/",
+            data: form.serialize(),
+            
+        })
+
+        //$.get("/lista_produtos", function(resposta) {$("#tabela").html(resposta)})
+        
+    })
+
+    //selector para submissao do form ajax
+    //selector ajax para envio após blur
+    //selector que envia req ajax após clique em remover
+{% endblock %}
