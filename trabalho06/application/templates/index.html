@@ -22,22 +22,55 @@
 {% block domready %}
     $.get("/cadastra_produto", function(resposta) { $("#form").html(resposta)})
     $.get("/lista_produtos", function(resposta) {$("#tabela").html(resposta)})
-    $("#form").submit(function(e) {
-        e.preventDefault();
-        var form = $(this)
 
-        $.ajax({
-            type: "POST",
-            url: "registra_produto/",
-            data: form.serialize(),
-            
-        })
+    $(document).on('submit', '#form-cadastro',function(e) {
+        e.preventDefault()
+        cadastraProduto()
+    }) 
 
-        //$.get("/lista_produtos", function(resposta) {$("#tabela").html(resposta)})
-        
+    $(document).on('click', '.remover', function(e){
+        e.stopPropagation()
+        removerProduto(this.id)
     })
 
+    function cadastraProduto(){
+        
+        $.ajax({
+            type: "POST",
+            url: "{% url 'registra_produto' %}",
+            data: {
+                categoria: $('#id_categoria').val(),
+                nome: $('#id_nome').val(),
+                qtd: $('#id_qtd').val(),
+                preco: $('#id_preco').val(),
+                csrfmiddlewaretoken: $('#form-cadastro input[name=csrfmiddlewaretoken]').val(),
+                action: 'post'
+            },
+            success: function(json) {
+                $.get("/cadastra_produto", function(resposta) { $("#form").html(resposta)})
+                $.get("/lista_produtos", function(resposta) {$("#tabela").html(resposta)})
+            },
+        })
+    }
+
+    function removerProduto(id) {
+        console.log(id)
+        $.ajax({
+            type: "POST",
+            data: {
+                csrfmiddlewaretoken: $('#form-cadastro input[name=csrfmiddlewaretoken]').val()
+            },
+            url: "/remove_produto/" + id,
+                    success: function(json) {
+            $.get("/lista_produtos", function(resposta) {$("#tabela").html(resposta)})
+            },
+        })
+    }
+
+
     //selector para submissao do form ajax
-    //selector ajax para envio após blur
     //selector que envia req ajax após clique em remover
+    //selector ajax para envio após blur
+    //validacao form
+
 {% endblock %}

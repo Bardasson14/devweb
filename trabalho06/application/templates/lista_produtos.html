@@ -13,6 +13,7 @@
     <tbody>
         {% for produto in produtos %}
             <tr class = "d-flex text-center">
+
                 <td class="col-3">
                     {{ produto.categoria }}
                 </td>
@@ -30,7 +31,7 @@
                 </td>
 
                 <td class="col-2">
-                    <button class="btn btn-danger font-weight-bold">
+                    <button type="click" class="btn btn-danger font-weight-bold remover" id={{produto.id}}>
                         Remover
                     </button>
                 </td>
