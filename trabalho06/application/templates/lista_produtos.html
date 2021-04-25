@@ -14,6 +14,10 @@
         {% for produto in produtos %}
             <tr class = "d-flex text-center">
 
+                <td id="p_id" class="d-none">
+                    {{ produto.id }}
+                </td>
+
                 <td class="col-3">
                     {{ produto.categoria }}
                 </td>
@@ -23,7 +27,8 @@
                 </td>
 
                 <td class="col-2">
-                    {{ produto.qtd}}
+                    <input type="number" class = "input_qtd" name="qtd" id="qtd_{{produto.id}}" value="{{produto.qtd}}" min="0" style="width: 100%;">
+                    
                 </td>
                 
                 <td class="col-2">
@@ -31,12 +36,22 @@
                 </td>
 
                 <td class="col-2">
-                    <button type="click" class="btn btn-danger font-weight-bold remover" id={{produto.id}}>
-                        Remover
+                    <button type="click" class="btn btn-danger font-weight-bold remover text-center">
+                        X
                     </button>
                 </td>
+
             </tr>
         {% endfor %}
+
+            <tr class="d-flex text-center">
+                <td class="col-8 font-weight-bold">
+                    Total: 
+                </td>
+                <td class="col-4 font-weight-bold">
+                    R$ {{total}}
+                </td>
+            </tr>
     </tbody>
 
 </table>

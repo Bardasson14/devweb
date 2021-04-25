@@ -14,25 +14,37 @@ def cadastra_produto(request):
 def registra_produto(request):
     data = {}
 
-    produto_form = ProdutoForm(request.POST)
-    if produto_form.is_valid():
-        print("acá")
-        produto = produto_form.save(commit=False)
-        produto.save()
-        data['success'] = "Produto cadastrado com sucesso."
+    if request.POST: 
+
+        produto_form = ProdutoForm(request.POST)
+        if produto_form.is_valid():
+            produto = produto_form.save(commit=False)
+            produto.save()
+            data['success'] = "Produto cadastrado com sucesso."
+            return JsonResponse(data)
+
+        data['error'] = "Erro ao cadastrar produto."
         return JsonResponse(data)
 
-    data['error'] = "Erro ao cadastrar produto."
-    return JsonResponse(data)
-
 def remove_produto(request, id):
-    print("ENTROU")
-    produto = get_object_or_404(Produto, pk=id)
-    produto.delete()
-    data = {}
-    data['success'] = "Produto removido com sucesso."
-    return JsonResponse(data)
+    if request.POST: 
+        produto = get_object_or_404(Produto, pk=id)
+        produto.delete()
+        data = {}
+        data['success'] = "Produto removido com sucesso."
+        return JsonResponse(data)
     
+def atualiza_produto(request, id):
+    if request.POST:
+        produto = get_object_or_404(Produto, pk=id)
+        print(request.POST.get('qtd'))
+        produto.qtd = request.POST.get('qtd')
+        produto.save()
+        return JsonResponse({'success': "Produto atualizado com sucesso"})
     
 def lista_produtos(request):
-    return render(request, 'lista_produtos.html', { 'produtos': Produto.objects.all()})
+    produtos = Produto.objects.all()
+    total = 0
+    for produto in produtos:
+        total += produto.qtd * produto.preco
+    return render(request, 'lista_produtos.html', { 'produtos': Produto.objects.all(), 'total': total})

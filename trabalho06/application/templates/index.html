@@ -22,16 +22,27 @@
 {% block domready %}
     $.get("/cadastra_produto", function(resposta) { $("#form").html(resposta)})
     $.get("/lista_produtos", function(resposta) {$("#tabela").html(resposta)})
-
+    
+    
     $(document).on('submit', '#form-cadastro',function(e) {
         e.preventDefault()
         cadastraProduto()
     }) 
-
+    
     $(document).on('click', '.remover', function(e){
-        e.stopPropagation()
-        removerProduto(this.id)
+        removeProduto(getRowID(this))
     })
+    
+    $(document).on('blur', '.input_qtd', function(e){
+        e.stopPropagation()
+        atualizaQuantidade(getRowID(this))
+    })
+
+   
+    function getRowID(element) {
+        var parent = $(element).parent()
+        return parseInt(parent.siblings('td').first().text())
+    }
 
     function cadastraProduto(){
         
@@ -53,23 +64,40 @@
         })
     }
 
-    function removerProduto(id) {
-        console.log(id)
+    function removeProduto(id) {
+        
         $.ajax({
             type: "POST",
             data: {
                 csrfmiddlewaretoken: $('#form-cadastro input[name=csrfmiddlewaretoken]').val()
             },
             url: "/remove_produto/" + id,
-                    success: function(json) {
-            $.get("/lista_produtos", function(resposta) {$("#tabela").html(resposta)})
+            success: function(json) {
+                $.get("/lista_produtos", function(resposta) {$("#tabela").html(resposta)})
+            },
+        })
+    }
+
+    function atualizaQuantidade(id) {
+        
+        $.ajax({
+            type: "POST",
+            url: "/atualiza_produto/" + id,
+            data: {
+                qtd: $(`#qtd_${id}`).val(),
+                csrfmiddlewaretoken: $('#form-cadastro input[name=csrfmiddlewaretoken]').val(),
+                action: 'post'
+            },
+            success: function(json) {
+                $.get("/cadastra_produto", function(resposta) { $("#form").html(resposta)})
+                $.get("/lista_produtos", function(resposta) {$("#tabela").html(resposta)})
             },
         })
     }
 
 
-    //selector para submissao do form ajax
-    //selector que envia req ajax após clique em remover
+    //selector para submissao do form ajax (feito)
+    //selector que envia req ajax após clique em remover (feito)
     //selector ajax para envio após blur
     //validacao form
 
